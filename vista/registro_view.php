@@ -8,19 +8,34 @@
 </head>
 <body>
 <h2>Registro</h2>
-  <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <form method="post" action="">
     <label>Nombre de usuario:</label>
-    <input type="text" name="username"><br><br>
+    <input type="text" name="username" require><br><br>
     <label>Contraseña:</label>
-    <input type="password" name="password"><br><br>
+    <input type="password" name="password" require><br><br>
     <label>Nombre:</label>
-    <input type="text" name="nombre"><br><br>
+    <input type="text" name="nombre" require><br><br>
     <label>Apellidos:</label>
-    <input type="text" name="apellidos"><br><br>
+    <input type="text" name="apellidos" require><br><br>
+    <label>Rol:</label>
+    <label for="opciones">Selecciona una opción:</label>
+      <select id="opciones" name="opciones">
+        <option value="Cliente">Cliente</option>
+        <option value="Administrador">Administrador</option>
+      </select>
+      <br><br>
     <input type="submit" name="submit" value="Registrarse"><br><br>
-    <span><?php echo $error; ?></span>
+    
   </form>
   <br>
   <p>¿Ya tienes una cuenta? <a href="login_view.php">Inicia sesión aquí</a></p>
+
+  <?php
+
+    if(isset($_POST['submit'])){
+      include_once('../modelo/registrar.php');
+    }
+
+  ?>
 </body>
 </html>
